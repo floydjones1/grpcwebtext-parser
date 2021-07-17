@@ -1,0 +1,25 @@
+{
+  "name": "grpcwebtext-parser",
+  "author": {
+    "name": "tdotcode",
+    "email": "floyd-jones1@hotmail.com",
+    "url": "https://todotcode.com"
+  },
+  "scripts": {
+    "start": "ts-node index",
+    "build": "tsc"
+  },
+  "version": "1.0.0",
+  "main": "index.ts",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^4.1.1",
+    "minimist": "^1.2.5",
+    "ts-node": "^10.1.0",
+    "typescript": "^4.3.5"
+  },
+  "devDependencies": {
+    "@types/minimist": "^1.2.2",
+    "@types/node": "^16.3.3"
+  }
+}
