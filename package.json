@@ -12,7 +12,6 @@
     "build": "rm dist/* && tsc -p tsconfig.json"
   },
   "main": "./dist/index.js",
-  "types": "dist/index.d.ts",
   "bin": "./dist/index.js",
   "version": "1.0.6",
   "license": "MIT",
@@ -20,6 +19,10 @@
     "chalk": "^4.1.1",
     "minimist": "^1.2.5"
   },
+  "keywords": [
+    "grpcwebtext",
+    "decoder"
+  ],
   "devDependencies": {
     "@types/minimist": "^1.2.2",
     "@types/node": "^16.3.3",
