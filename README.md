@@ -14,6 +14,5 @@ Please install protoc either through chocolately(Windows) or brew(Mac).
 ## How to use?
 
 ```
-yarn install
-yarn start [insert grpc text]
+npx grpcwebtext [insert grpc text]
 ```

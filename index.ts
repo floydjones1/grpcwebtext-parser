@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import { exec } from "child_process";
 import { promisify } from "util";
 import minimist from "minimist";
@@ -12,9 +13,9 @@ let grpcWebTexts: Array<string> = [
   "AAAAAAMInRQ=gAAAACBncnBjLXN0YXR1czowDQpncnBjLW1lc3NhZ2U6T0sNCg==",
 ];
 
-function getBinaryHex() {
+function getBinaryHex(grpcText: Array<string>) {
   const buffers: Array<string> = [];
-  for (const text of grpcWebTexts) {
+  for (const text of grpcText) {
     const buffer = Buffer.from(text, "base64");
     const bufString = buffer.toString("hex");
     buffers.push(bufString);
@@ -25,13 +26,11 @@ function getBinaryHex() {
 async function main() {
   const { _: text } = argv;
   if (text.length === 0) {
-    console.error("no input grpc text, defaulting to demo values");
-  } else {
-    grpcWebTexts = text;
+    console.error("No input grpc text, defaulting to demo values");
   }
-
+  
   // bytes are in base 16
-  const buffers = getBinaryHex();
+  const buffers = text.length ? getBinaryHex(text) : getBinaryHex(grpcWebTexts);
   for (const i in buffers) {
     const b = buffers[i];
     const webText = grpcWebTexts[i];
