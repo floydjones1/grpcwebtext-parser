@@ -3,6 +3,7 @@ import { exec } from "child_process";
 import { promisify } from "util";
 import minimist from "minimist";
 import chalk from "chalk";
+import which from "which";
 
 var argv = minimist(process.argv.slice(2));
 const asyncExec = promisify(exec);
@@ -23,12 +24,27 @@ function getBinaryHex(grpcText: Array<string>) {
   return buffers;
 }
 
+function validateProtocExist() {
+  let resolved = which.sync("protoc", { nothrow: false });
+  if (!resolved) {
+    log(
+      chalk.red(
+        `\ngrpcwebtext-parser requires ${chalk.bgRed(
+          chalk.white(`protoc`)
+        )}\nPlease download it before running this program\n`
+      )
+    );
+    process.exit(1);
+  }
+}
+
 async function main() {
+  validateProtocExist();
   const { _: text } = argv;
   if (text.length === 0) {
     console.error("No input grpc text, defaulting to demo values");
   }
-  
+
   // bytes are in base 16
   const buffers = text.length ? getBinaryHex(text) : getBinaryHex(grpcWebTexts);
   for (const i in buffers) {
