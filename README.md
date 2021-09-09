@@ -15,5 +15,4 @@ Please install protoc either through chocolately(Windows) or brew(Mac).
 
 ```
 npx grpcwebtext-parser [insert grpc text]
-
 ```
